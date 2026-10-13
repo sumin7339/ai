@@ -1,251 +1,107 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="light dark" />
-  <title>AI Creative Agent Team</title>
-  <link rel="preconnect" href="https://copilotstudio.microsoft.com" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-  <style>
-    :root {
-      --bg: #f5f6fa;
-      --surface: #ffffff;
-      --text: #14161f;
-      --muted: #6b7280;
-      --border: rgba(20, 22, 31, 0.08);
-      --accent-1: #6366f1;
-      --accent-2: #8b5cf6;
-      --accent-3: #06b6d4;
-      --ok: #10b981;
-      --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 24px 60px -12px rgba(30, 41, 90, .18);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b0d14;
-        --surface: #12151f;
-        --text: #f3f4f8;
-        --muted: #9aa1b2;
-        --border: rgba(255, 255, 255, 0.08);
-        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 30px 80px -20px rgba(0, 0, 0, .7);
-      }
-    }
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>포스터 | 3대가 함께하는 세대공감 요리 교실</title>
+<style>
+:root{--bg:#FFF8F5;--g1:#FFE1D6;--g2:#FFC2B3;--acc:#FF6B4A;--acc2:#FFB199;--deep:#E04E2E;--txt:#2A1712;--sm:#B93A1B;--sub:rgba(42,23,18,.68);
+--glass:rgba(255,255,255,.66);--line:rgba(255,255,255,.75);--shadow:0 12px 36px rgba(255,107,74,.14);--r:28px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,"Malgun Gothic",sans-serif;color:var(--txt);background:var(--bg);line-height:1.6;
+background-image:radial-gradient(40vw 40vw at 8% 10%,rgba(255,194,179,.75),transparent 70%),radial-gradient(45vw 45vw at 95% 35%,rgba(255,225,214,.95),transparent 70%),radial-gradient(38vw 38vw at 30% 95%,rgba(255,177,153,.45),transparent 70%);background-attachment:fixed}
+.glass{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.9);
+-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,0) 55%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(255,255,255,.94)}}
+.ic{width:28px;height:28px;fill:none;stroke:var(--sm);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.badge{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--g1);flex:none}
+.pill{display:inline-block;padding:.35em 1em;border-radius:999px;background:var(--g1);color:var(--sm);font-weight:700;font-size:.85rem}
+.chk{display:inline-block;padding:.05em .55em;border-radius:999px;background:rgba(255,107,74,.14);color:var(--sm);font-weight:800;font-size:.85em;white-space:nowrap}
+.asm{color:var(--sub);font-size:.85em;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.9em 2em;border-radius:999px;border:0;cursor:pointer;
+background:linear-gradient(135deg,var(--acc),var(--deep));color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px rgba(224,78,46,.3);font-family:inherit}
+.btn:hover{filter:brightness(1.05)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sm);outline-offset:3px}
+.accent{color:var(--acc)}
+.illus{width:100%;height:auto;display:block}
+@media (prefers-reduced-motion:no-preference){.steam path{animation:rise 3.6s ease-in-out infinite}.steam path:nth-child(2){animation-delay:.6s}.steam path:nth-child(3){animation-delay:1.2s}
+@keyframes rise{0%,100%{opacity:.5;transform:translateY(6px)}50%{opacity:1;transform:translateY(-4px)}}}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important;transition:none!important}
+.glass{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;border:1px solid #FFC2B3!important}.glass::before{display:none}.btn{box-shadow:none}body{background-attachment:scroll}}
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-
-    body {
-      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      display: grid;
-      place-items: center;
-      padding: clamp(0px, 3vw, 32px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* 은은한 배경 글로우 */
-    body::before, body::after {
-      content: "";
-      position: fixed;
-      width: 52vmax; height: 52vmax;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: .35;
-      z-index: 0;
-      pointer-events: none;
-    }
-    body::before { top: -22vmax; left: -14vmax; background: radial-gradient(circle, var(--accent-1), transparent 65%); }
-    body::after  { bottom: -26vmax; right: -16vmax; background: radial-gradient(circle, var(--accent-3), transparent 65%); }
-    @media (prefers-color-scheme: dark) { body::before, body::after { opacity: .22; } }
-
-    .shell {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 960px);
-      height: 100%;
-      max-height: 920px;
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      animation: rise .6s cubic-bezier(.2, .8, .2, 1) both;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      background: color-mix(in srgb, var(--surface) 88%, transparent);
-      backdrop-filter: saturate(160%) blur(12px);
-    }
-
-    .logo {
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      display: grid; place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2) 55%, var(--accent-3));
-      box-shadow: 0 6px 16px -4px rgba(99, 102, 241, .55);
-      flex: none;
-    }
-    .logo svg { width: 22px; height: 22px; }
-
-    .title { min-width: 0; }
-    .title h1 {
-      margin: 0;
-      font-size: 15px;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .title p {
-      margin: 2px 0 0;
-      font-size: 12.5px;
-      color: var(--muted);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--ok);
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, .5);
-      animation: pulse 2s infinite;
-    }
-
-    .actions { margin-left: auto; display: flex; gap: 8px; }
-    .btn {
-      appearance: none;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      display: grid; place-items: center;
-      cursor: pointer;
-      transition: background .2s, color .2s, transform .2s;
-    }
-    .btn:hover { background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); }
-    .btn:active { transform: scale(.94); }
-    .btn:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 2px; }
-    .btn svg { width: 18px; height: 18px; }
-
-    .stage { position: relative; flex: 1; min-height: 0; background: var(--surface); }
-    iframe {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      border: 0;
-      opacity: 0;
-      transition: opacity .5s ease;
-    }
-    iframe.ready { opacity: 1; }
-
-    /* 로딩 상태 */
-    .loader {
-      position: absolute; inset: 0;
-      display: grid; place-content: center; justify-items: center; gap: 16px;
-      color: var(--muted);
-      font-size: 13.5px;
-      transition: opacity .4s ease, visibility .4s;
-    }
-    .loader.hide { opacity: 0; visibility: hidden; }
-    .ring {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      border: 3px solid color-mix(in srgb, var(--accent-1) 18%, transparent);
-      border-top-color: var(--accent-1);
-      animation: spin .9s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes rise { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    /* 모바일: 전체 화면 */
-    @media (max-width: 640px) {
-      body { padding: 0; }
-      .shell { max-height: none; border-radius: 0; border: 0; }
-      header { padding: 12px 14px; padding-top: max(12px, env(safe-area-inset-top)); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-    }
-  </style>
-</head>
-<body>
-  <main class="shell">
-    <header>
-      <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/>
-          <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/>
-        </svg>
-      </div>
-      <div class="title">
-        <h1>AI Creative Agent Team</h1>
-        <p><span class="dot" aria-hidden="true"></span>온라인 · 무엇이든 물어보세요</p>
-      </div>
-      <div class="actions">
-        <button class="btn" id="reload" type="button" aria-label="대화 새로고침" title="새로고침">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
-        </button>
-        <button class="btn" id="fullscreen" type="button" aria-label="전체 화면" title="전체 화면">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-        </button>
-      </div>
-    </header>
-
-    <section class="stage">
-      <div class="loader" id="loader" role="status" aria-live="polite">
-        <div class="ring"></div>
-        <span>에이전트를 불러오는 중…</span>
-      </div>
-      <iframe
-        id="chat"
-        title="AI Creative Agent Team 채팅"
-        src="https://copilotstudio.microsoft.com/environments/Default-9ef36566-f756-4f11-9c5f-307c10f409f9/bots/cre46_aicreativeagentteam_1c7FWC/webchat?__version__=2&enableFileAttachment=false&cliAgent=true"
-        loading="eager"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="clipboard-write; microphone"
-      ></iframe>
-    </section>
-  </main>
-
-  <script>
-    const frame = document.getElementById('chat');
-    const loader = document.getElementById('loader');
-    const shell = document.querySelector('.shell');
-
-    const showReady = () => {
-      frame.classList.add('ready');
-      loader.classList.add('hide');
-    };
-    frame.addEventListener('load', showReady);
-    // 로드 이벤트가 누락되는 경우를 대비한 안전장치
-    setTimeout(showReady, 8000);
-
-    document.getElementById('reload').addEventListener('click', () => {
-      frame.classList.remove('ready');
-      loader.classList.remove('hide');
-      frame.src = frame.src;
-    });
-
-    document.getElementById('fullscreen').addEventListener('click', () => {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else shell.requestFullscreen?.();
-    });
-  </script>
-</body>
-</html>
+body{display:flex;justify-content:center;padding:24px 12px}
+.poster{width:min(100%,640px);aspect-ratio:1/1.414;border-radius:36px;padding:34px 34px 26px;display:flex;flex-direction:column;gap:14px;overflow:hidden;position:relative;
+background:radial-gradient(70% 45% at 15% 8%,rgba(255,194,179,.9),transparent 70%),radial-gradient(60% 45% at 95% 60%,rgba(255,225,214,1),transparent 70%),radial-gradient(60% 40% at 10% 100%,rgba(255,177,153,.55),transparent 70%),var(--bg);
+box-shadow:0 30px 70px rgba(255,107,74,.18)}
+.poster>*{position:relative}
+.top{display:flex;justify-content:space-between;align-items:center}
+.top .pill{background:rgba(255,255,255,.75)}
+.illus-wrap{margin:-4px 10px -8px}
+h1{margin:0;text-align:center;font-size:clamp(2rem,7.4vw,3.05rem);line-height:1.18;letter-spacing:-.03em;font-weight:900}
+.sub{margin:0;text-align:center;color:var(--sub);font-size:clamp(.95rem,2.6vw,1.08rem)}
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pt{padding:14px 10px;text-align:center;border-radius:24px}
+.pt .badge{width:46px;height:46px;margin-bottom:6px}.pt b{display:block;font-size:.98rem;letter-spacing:-.02em}.pt span{font-size:.78rem;color:var(--sub);line-height:1.45;display:block}
+.info{padding:14px 20px;display:grid;gap:6px;font-size:.93rem}
+.info div{display:flex;gap:10px;align-items:flex-start}.info .ic{width:20px;height:20px;margin-top:3px}.info b{color:var(--sm);min-width:2.6em}
+.cta{display:flex;flex-direction:column;align-items:center;gap:6px}
+.foot{margin-top:auto;font-size:.74rem;color:var(--sub);text-align:center;line-height:1.5}
+.motif{position:absolute;right:-30px;top:44%;width:180px;opacity:.35;pointer-events:none}
+@media (max-width:520px){.poster{aspect-ratio:auto;padding:24px 18px}.points{grid-template-columns:1fr}}
+@media print{body{padding:0}.poster{box-shadow:none;width:100%}@page{size:A4;margin:8mm}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-pot" viewBox="0 0 24 24"><path d="M5 10h14v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M3 10h18M11 7.5h2M9.5 2.5c-.8 1 .8 2-.1 3M12.5 2.5c-.8 1 .8 2-.1 3M15.5 2.5c-.8 1 .8 2-.1 3"/></symbol>
+<symbol id="i-spoon" viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="3.5" ry="4.5"/><path d="M12 11.5V21"/></symbol>
+<symbol id="i-gen" viewBox="0 0 24 24"><circle cx="6" cy="8" r="2.6"/><circle cx="12.5" cy="9" r="2.2"/><circle cx="18.5" cy="11" r="1.7"/><path d="M2 19a4 4 0 0 1 8 0M9 19a3.5 3.5 0 0 1 7 0M15.5 19a3 3 0 0 1 6 0"/></symbol>
+<symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><rect x="5.5" y="10" width="13" height="10.5" rx="2"/><path d="M12 18.2c-1.6-1.2-3-2.2-2.3-3.4.5-.8 1.6-.6 2.3.2.7-.8 1.8-1 2.3-.2.7 1.2-.7 2.2-2.3 3.4z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C9.5 5 6 4.6 2.5 5v14c3.5-.4 7 0 9.5 1.5 2.5-1.5 6-1.9 9.5-1.5V5c-3.5-.4-7 0-9.5 1.5zM12 6.5v14"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-4.8-8-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 8 2.2C20 15.2 12 20 12 20z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="15.5" cy="15" r="1.2"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+</svg>
+<main class="poster" aria-label="3대가 함께하는 세대공감 요리 교실 포스터">
+ <div class="top"><span class="pill">2026 세대공감 가족 요리 교실</span><span class="pill">3대 가족 30팀 선착순</span></div>
+ <div class="illus-wrap"><svg class="illus" viewBox="0 0 900 520" role="img" aria-label="펼친 그림책 위에 김이 오르는 냄비와 할머니, 부모, 아이 세 사람">
+<defs><linearGradient id="potg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8466"/><stop offset="1" stop-color="#FF6B4A"/></linearGradient></defs>
+<path d="M450 372 C330 340 190 345 90 372 L90 492 C190 470 330 470 450 492 Z" fill="#FFC2B3"/>
+<path d="M450 372 C570 340 710 345 810 372 L810 492 C710 470 570 470 450 492 Z" fill="#FFC2B3"/>
+<path d="M450 360 C330 328 190 333 90 360 L90 482 C190 460 330 460 450 482 Z" fill="#fff" stroke="#FFB199" stroke-width="4"/>
+<path d="M450 360 C570 328 710 333 810 360 L810 482 C710 460 570 460 450 482 Z" fill="#fff" stroke="#FFB199" stroke-width="4"/>
+<g stroke="#FFE1D6" stroke-width="3" fill="none"><path d="M140 392 C230 374 330 374 410 392"/><path d="M140 418 C230 400 330 400 410 418"/><path d="M140 444 C230 426 330 426 410 444"/>
+<path d="M490 392 C570 374 670 374 760 392"/><path d="M490 418 C570 400 670 400 760 418"/><path d="M490 444 C570 426 670 426 760 444"/></g>
+<line x1="450" y1="360" x2="450" y2="482" stroke="#FFB199" stroke-width="4"/>
+<g class="steam" fill="none" stroke="#FFB199" stroke-width="8" stroke-linecap="round">
+<path d="M390 175 C376 150 404 130 390 100 C378 78 398 62 390 40"/><path d="M450 175 C436 150 464 130 450 100 C438 78 458 62 450 40"/><path d="M510 175 C496 150 524 130 510 100 C498 78 518 62 510 40"/></g>
+<path d="M450 108 C430 90 404 72 418 52 C430 36 446 42 450 54 C454 42 470 36 482 52 C496 72 470 90 450 108 Z" fill="#FF6B4A"/>
+<rect x="328" y="228" width="244" height="132" rx="50" fill="url(#potg)"/>
+<rect x="314" y="212" width="272" height="26" rx="13" fill="#B93A1B"/>
+<ellipse cx="450" cy="203" rx="18" ry="14" fill="#B93A1B"/>
+<rect x="308" y="260" width="44" height="20" rx="10" fill="#B93A1B"/><rect x="548" y="260" width="44" height="20" rx="10" fill="#B93A1B"/>
+<rect x="370" y="270" width="160" height="12" rx="6" fill="#FFB199"/>
+<g><rect x="80" y="216" width="140" height="164" rx="62" fill="#FFC2B3"/><circle cx="150" cy="175" r="44" fill="#FFC2B3"/><ellipse cx="150" cy="126" rx="22" ry="12" fill="#FFC2B3"/>
+<circle cx="140" cy="172" r="4" fill="#2A1712"/><circle cx="160" cy="172" r="4" fill="#2A1712"/></g>
+<g><rect x="200" y="238" width="120" height="142" rx="54" fill="#FFB199"/><circle cx="260" cy="200" r="37" fill="#FFB199"/>
+<circle cx="251" cy="198" r="4" fill="#2A1712"/><circle cx="269" cy="198" r="4" fill="#2A1712"/></g>
+<g><rect x="654" y="268" width="92" height="112" rx="42" fill="#FF6B4A"/><circle cx="700" cy="240" r="29" fill="#FF6B4A"/>
+<circle cx="693" cy="238" r="3.5" fill="#2A1712"/><circle cx="707" cy="238" r="3.5" fill="#2A1712"/></g>
+<path d="M810 146 C800 137 788 128 795 118 C801 110 808 113 810 119 C812 113 819 110 825 118 C832 128 820 137 810 146 Z" fill="#FFC2B3"/>
+<path d="M90 120 C83 113 74 107 79 99 C83 93 88 96 90 100 C92 96 97 93 101 99 C106 107 97 113 90 120 Z" fill="#FFB199"/>
+</svg></div>
+ <h1>할머니의 <span class="accent">손맛</span>을<br>아이의 손으로</h1>
+ <p class="sub">조부모·부모·아이, 3대가 한 식탁에 모여요.<br>우리 가족 레시피를 함께 펼쳐 봐요.</p>
+ <section class="points" aria-label="핵심 포인트">
+  <div class="pt glass"><span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-gen"/></svg></span><b>세 세대, 한 식탁</b><span>떡국·김치전 <span class="asm">[가정]</span>을<br>3대가 함께 만들어요</span></div>
+  <div class="pt glass"><span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span><b>우리 집 그림책</b><span>우리 가족 레시피를<br>그림책으로 남겨요</span></div>
+  <div class="pt glass"><span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-pot"/></svg></span><b>몸만 오세요</b><span>재료와 도구는 저희가<br>준비해 둘게요 <span class="asm">[가정]</span></span></div>
+ </section>
+ <section class="info glass" aria-label="행사 정보">
+  <div><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg><b>일시</b><span>2026년 12월 12일(토) 10:00~13:00</span></div>
+  <div><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><b>장소</b><span>구립 가족센터 조리실</span></div>
+  <div><svg class="ic" aria-hidden="true"><use href="#i-gen"/></svg><b>대상</b><span>3대 가족 30팀(약 90명), 선착순 · 참가비 무료 <span class="asm">[가정]</span></span></div>
+  <div><svg class="ic" aria-hidden="true"><use href="#i-house"/></svg><b>신청</b><span>가족 단위로 웹페이지에서 신청 · 신청 기간과 링크 <span class="chk">[확인 필요]</span></span></div>
+ </section>
+ <div class="cta"><a class="btn" href="webpage.html#apply">우리 가족 신청하기</a></div>
+ <p class="foot">주최 <span class="chk">[확인 필요]</span> · 문의 <span class="chk">[확인 필요]</span><br>3대 가족 단위로 신청해 주세요. 선착순 30팀이 모이면 접수를 마감해요. 식품 알레르기가 있으면 미리 알려 주세요. <span class="asm">[가정]</span></p>
+</main>
+</body></html>
