@@ -1,1 +1,251 @@
-<!DOCTYPE html><html style="height: 100%;"><body style="height: 100%; margin: 0;"><iframe src="https://copilotstudio.microsoft.com/environments/Default-9ef36566-f756-4f11-9c5f-307c10f409f9/bots/cre46_aicreativeagentteam_1c7FWC/webchat?__version__=2&enableFileAttachment=false&cliAgent=true" frameborder="0" style="width: 100%; height: 100%; border: 0;"></iframe></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <title>AI Creative Agent Team</title>
+  <link rel="preconnect" href="https://copilotstudio.microsoft.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <style>
+    :root {
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --text: #14161f;
+      --muted: #6b7280;
+      --border: rgba(20, 22, 31, 0.08);
+      --accent-1: #6366f1;
+      --accent-2: #8b5cf6;
+      --accent-3: #06b6d4;
+      --ok: #10b981;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 24px 60px -12px rgba(30, 41, 90, .18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d14;
+        --surface: #12151f;
+        --text: #f3f4f8;
+        --muted: #9aa1b2;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 30px 80px -20px rgba(0, 0, 0, .7);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      display: grid;
+      place-items: center;
+      padding: clamp(0px, 3vw, 32px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 은은한 배경 글로우 */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      width: 52vmax; height: 52vmax;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .35;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before { top: -22vmax; left: -14vmax; background: radial-gradient(circle, var(--accent-1), transparent 65%); }
+    body::after  { bottom: -26vmax; right: -16vmax; background: radial-gradient(circle, var(--accent-3), transparent 65%); }
+    @media (prefers-color-scheme: dark) { body::before, body::after { opacity: .22; } }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 960px);
+      height: 100%;
+      max-height: 920px;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: rise .6s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(160%) blur(12px);
+    }
+
+    .logo {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2) 55%, var(--accent-3));
+      box-shadow: 0 6px 16px -4px rgba(99, 102, 241, .55);
+      flex: none;
+    }
+    .logo svg { width: 22px; height: 22px; }
+
+    .title { min-width: 0; }
+    .title h1 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .title p {
+      margin: 2px 0 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, .5);
+      animation: pulse 2s infinite;
+    }
+
+    .actions { margin-left: auto; display: flex; gap: 8px; }
+    .btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      cursor: pointer;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .btn:hover { background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); }
+    .btn:active { transform: scale(.94); }
+    .btn:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 2px; }
+    .btn svg { width: 18px; height: 18px; }
+
+    .stage { position: relative; flex: 1; min-height: 0; background: var(--surface); }
+    iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      opacity: 0;
+      transition: opacity .5s ease;
+    }
+    iframe.ready { opacity: 1; }
+
+    /* 로딩 상태 */
+    .loader {
+      position: absolute; inset: 0;
+      display: grid; place-content: center; justify-items: center; gap: 16px;
+      color: var(--muted);
+      font-size: 13.5px;
+      transition: opacity .4s ease, visibility .4s;
+    }
+    .loader.hide { opacity: 0; visibility: hidden; }
+    .ring {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 3px solid color-mix(in srgb, var(--accent-1) 18%, transparent);
+      border-top-color: var(--accent-1);
+      animation: spin .9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* 모바일: 전체 화면 */
+    @media (max-width: 640px) {
+      body { padding: 0; }
+      .shell { max-height: none; border-radius: 0; border: 0; }
+      header { padding: 12px 14px; padding-top: max(12px, env(safe-area-inset-top)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/>
+          <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/>
+        </svg>
+      </div>
+      <div class="title">
+        <h1>AI Creative Agent Team</h1>
+        <p><span class="dot" aria-hidden="true"></span>온라인 · 무엇이든 물어보세요</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="reload" type="button" aria-label="대화 새로고침" title="새로고침">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+        <button class="btn" id="fullscreen" type="button" aria-label="전체 화면" title="전체 화면">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="stage">
+      <div class="loader" id="loader" role="status" aria-live="polite">
+        <div class="ring"></div>
+        <span>에이전트를 불러오는 중…</span>
+      </div>
+      <iframe
+        id="chat"
+        title="AI Creative Agent Team 채팅"
+        src="https://copilotstudio.microsoft.com/environments/Default-9ef36566-f756-4f11-9c5f-307c10f409f9/bots/cre46_aicreativeagentteam_1c7FWC/webchat?__version__=2&enableFileAttachment=false&cliAgent=true"
+        loading="eager"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="clipboard-write; microphone"
+      ></iframe>
+    </section>
+  </main>
+
+  <script>
+    const frame = document.getElementById('chat');
+    const loader = document.getElementById('loader');
+    const shell = document.querySelector('.shell');
+
+    const showReady = () => {
+      frame.classList.add('ready');
+      loader.classList.add('hide');
+    };
+    frame.addEventListener('load', showReady);
+    // 로드 이벤트가 누락되는 경우를 대비한 안전장치
+    setTimeout(showReady, 8000);
+
+    document.getElementById('reload').addEventListener('click', () => {
+      frame.classList.remove('ready');
+      loader.classList.remove('hide');
+      frame.src = frame.src;
+    });
+
+    document.getElementById('fullscreen').addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else shell.requestFullscreen?.();
+    });
+  </script>
+</body>
+</html>
